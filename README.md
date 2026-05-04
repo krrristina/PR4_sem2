@@ -125,32 +125,36 @@ services:
 
 ## Инструкция запуска
 
-### 1. Запустите auth сервис
+### 1. Запустить auth сервис
 
 ```bash
 go run ./services/auth/cmd/auth
 ```
-
-### 2. Запустите tasks сервис
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/запуск%20auth.png)
+### 2. Запустить tasks сервис
 
 ```bash
 go run ./services/tasks/cmd/tasks
 ```
-
-### 3. Запустите Prometheus и Grafana
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/запуск%20tasks.png)
+### 3. Запустить Prometheus и Grafana
 
 ```bash
 cd deploy/monitoring
 docker compose up -d
 ```
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/containers%20created.png)
 
-### 4. Проверьте метрики напрямую
+### 4. Проверить метрики напрямую
 
 ```bash
 curl http://localhost:8082/metrics
 ```
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/metrics.png)
 
-### 5. Откройте интерфейсы
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/metrics%202.png)
+
+### 5. Открыть интерфейсы
 
 | Сервис | Адрес | Логин/Пароль |
 |---|---|---|
@@ -165,7 +169,7 @@ curl http://localhost:8082/metrics
 - URL: `http://localhost:8082/tasks`
 - Headers: `Authorization: Bearer my-test-token`
 
-<!-- Вставьте скриншот -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/все%20работает.png)
 
 ### Запросы с ошибкой
 
@@ -173,13 +177,13 @@ curl http://localhost:8082/metrics
 - URL: `http://localhost:8082/tasks`
 - Headers: `Authorization: Bearer invalid-token`
 
-<!-- Вставьте скриншот -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/unauthorized.png)
 
 ## Prometheus Targets
 
 Prometheus успешно собирает метрики с сервиса tasks — статус **UP**.
 
-<!-- Вставьте скриншот страницы http://localhost:9090/targets -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/prometheys%20работает.png)
 
 ## Grafana Dashboard — Tasks metrics
 
@@ -189,7 +193,7 @@ Prometheus успешно собирает метрики с сервиса task
 
 Показывает количество запросов в секунду с разбивкой по статусу ответа (200, 401).
 
-<!-- Вставьте скриншот графика RPS -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/график%201.png)
 
 ### График 2 — Ошибки 4xx/5xx
 
@@ -197,7 +201,7 @@ Prometheus успешно собирает метрики с сервиса task
 
 Показывает только ошибочные запросы — удобно для алертинга.
 
-<!-- Вставьте скриншот графика ошибок -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/график%202%20(запросы%20с%20неверным%20токеном).png)
 
 ### График 3 — Latency p95
 
@@ -205,7 +209,7 @@ Prometheus успешно собирает метрики с сервиса task
 
 Показывает время ответа, в которое укладываются 95% запросов.
 
-<!-- Вставьте скриншот графика latency -->
+![](https://github.com/krrristina/PR4_sem2/blob/main/screenshots/Latency%20p95.png)
 
 ## Контрольные вопросы
 

@@ -12,8 +12,8 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
-	pb "github.com/krrristina/PR3_sem2/proto"
-	"github.com/krrristina/PR3_sem2/shared/middleware"
+	pb "github.com/krrristina/PR4_sem2/proto"
+	"github.com/krrristina/PR4_sem2/shared/middleware"
 )
 
 type Handler struct {

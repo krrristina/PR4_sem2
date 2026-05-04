@@ -7,9 +7,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	pb "github.com/krrristina/PR3_sem2/proto"
-	grpcserver "github.com/krrristina/PR3_sem2/services/auth/internal/grpc"
-	"github.com/krrristina/PR3_sem2/shared/logger"
+	pb "github.com/krrristina/PR4_sem2/proto"
+	grpcserver "github.com/krrristina/PR4_sem2/services/auth/internal/grpc"
+	"github.com/krrristina/PR4_sem2/shared/logger"
 )
 
 func main() {

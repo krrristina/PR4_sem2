@@ -8,14 +8,15 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	pb "github.com/krrristina/PR3_sem2/proto"
-	"github.com/krrristina/PR3_sem2/services/tasks/internal"
-	"github.com/krrristina/PR3_sem2/shared/logger"
-	"github.com/krrristina/PR3_sem2/shared/middleware"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	pb "github.com/krrristina/PR4_sem2/proto"
+	"github.com/krrristina/PR4_sem2/services/tasks/internal"
+	"github.com/krrristina/PR4_sem2/shared/logger"
+	"github.com/krrristina/PR4_sem2/shared/middleware"
 )
 
 func main() {
-	// Создаём логгер для сервиса tasks
 	log, err := logger.New("tasks")
 	if err != nil {
 		panic(err)
@@ -38,12 +39,18 @@ func main() {
 		Log:        log,
 	}
 
-	// Подключаем middleware: сначала RequestID, потом AccessLog
 	mux := http.NewServeMux()
+
+	// Роут с метриками
 	mux.HandleFunc("/tasks", h.GetTasks)
 
+	// Endpoint для Prometheus — отдаёт метрики
+	mux.Handle("/metrics", promhttp.Handler())
+
 	handler := middleware.RequestID(
-		middleware.AccessLog(log)(mux),
+		middleware.AccessLog(log)(
+			middleware.Metrics("/tasks")(mux),
+		),
 	)
 
 	tasksPort := os.Getenv("TASKS_PORT")

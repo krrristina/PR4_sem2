@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	pb "github.com/krrristina/PR3_sem2/proto"
+	pb "github.com/krrristina/PR4_sem2/proto"
 	"go.uber.org/zap"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
